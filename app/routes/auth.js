@@ -22,4 +22,11 @@ router.post("/login", (req, res) => {
     }
 });
 
+router.get("/login-test", (req, res) => {
+    res.send(`
+        <h2>Login Test Page</h2>
+        <p>Use POST /auth/login via Postman or curl</p>
+    `);
+});
+
 module.exports = router;

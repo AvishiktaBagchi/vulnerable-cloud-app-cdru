@@ -2,5 +2,7 @@
     "appService.zipIgnorePattern": [
         "node_modules{,/**}",
         ".vscode{,/**}"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/a35c0697-a486-4992-b6a8-b2724219af48/resourceGroups/cloud-security-lab/providers/Microsoft.Web/sites/vulnerableapp-avi",
+    "appService.deploySubpath": "."
 }
