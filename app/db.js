@@ -1,5 +1,5 @@
-const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("./database.db");
+const fs = require("fs");
+const db = JSON.parse(fs.readFileSync("db.json"));
 
 // query
 function findUser(username, password, callback) {
