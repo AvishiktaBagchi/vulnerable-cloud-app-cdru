@@ -8,15 +8,20 @@ const dataRoutes = require("./routes/data");
 const app = express();
 app.use(bodyParser.json());
 
-// debug info
+// INTENTIONAL INFO DISCLOSURE (for ZAP)
 app.get("/", (req, res) => {
-    res.send(`App running in DEBUG mode. API_KEY=${process.env.API_KEY}`);
+    res.send(`
+        <h1>Vulnerable Cloud App</h1>
+        <p>Debug Mode: ON</p>
+        <p>API_KEY=${process.env.API_KEY}</p>
+    `);
 });
 
 app.use("/auth", authRoutes);
 app.use("/data", dataRoutes);
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

@@ -1,0 +1,10 @@
+{
+  "users": [
+    { "id": 1, "username": "admin", "password": "admin123", "role": "admin" },
+    { "id": 2, "username": "student", "password": "password", "role": "user" }
+  ],
+  "data": [
+    { "id": 1, "secret": "Top Secret Cloud Config" },
+    { "id": 2, "secret": "API_KEY=hardcoded-in-db" }
+  ]
+}

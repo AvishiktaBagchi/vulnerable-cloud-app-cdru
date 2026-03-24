@@ -1,10 +1,16 @@
-const { db } = require("./app/db");
+const fs = require("fs");
 
-db.serialize(() => {
-    db.run("CREATE TABLE IF NOT EXISTS users (id INTEGER, username TEXT, password TEXT)");
-    db.run("DELETE FROM users");
+const db = {
+    users: [
+        { id: 1, username: "admin", password: "admin123", role: "admin" },
+        { id: 2, username: "student", password: "password", role: "user" }
+    ],
+    data: [
+        { id: 1, secret: "Top Secret Cloud Config" },
+        { id: 2, secret: "Leaked API Key: 12345-ABCDE" }
+    ]
+};
 
-    db.run("INSERT INTO users VALUES (1, 'admin', 'password123')");
-});
+fs.writeFileSync("db.json", JSON.stringify(db, null, 2));
 
-db.close();
+console.log("Database initialized");
