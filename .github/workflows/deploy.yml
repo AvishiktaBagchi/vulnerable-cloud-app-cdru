@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Initialize DB
+      run: npm run init-db
+
+    - name: SAST - Scan for secrets
+      run: |
+        echo "Scanning for secrets..."
+        if grep -r "API_KEY=" .; then
+          echo "Hardcoded secret found!"
+          exit 1
+        else
+          echo "No secrets found"
+        fi
